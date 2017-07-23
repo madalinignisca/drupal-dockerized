@@ -1,0 +1,32 @@
+version: "3.3"
+services:
+  web:
+    image: nginx:1.12.1
+    ports:
+      - "8080:80"
+    volumes:
+      - .:/app
+    links:
+      - workers
+  workers:
+    build: ./docker/php/
+    image: 16nsk/drupal-php:1.0.0
+    volumes:
+      - .:/app
+    links:
+      - db
+#      - cache
+#      - search
+  db:
+    image: mariadb:10.2.7
+    environment:
+      - MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD}
+      - MYSQL_DATABASE=${MYSQL_DATABASE}
+      - MYSQL_USER=${MYSQL_USER}
+      - MYSQL_PASSWORD=${MYSQL_PASSWORD}
+    volumes:
+      - data:/var/lib/mysql
+
+volumes:
+  data:
+    external: true
