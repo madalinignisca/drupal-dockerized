@@ -20,7 +20,7 @@ services:
     links:
       - db
       - cache
-#      - search
+      - search
   db:
     image: mariadb:10.2.7
     ports:
