@@ -21,6 +21,15 @@ services:
       - db
       - cache
       - search
+  watcher:
+    build: ./docker/watcher/
+    image: 16nsk/drupal-watcher:1.0.0
+    volumes:
+      - .:/app
+    links:
+      - db
+      - cache
+      - search
   db:
     image: mariadb:10.2.7
     ports:
