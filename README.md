@@ -18,6 +18,7 @@ A profile based on Minimal that enables and configures defaults to use Redis and
 * If no website is installed or no database of existing website is present in the `to_be_integrated` directory than the website will be installed automatically.
 * Add a tools container based on PHP-CLI with support for Drush/Drupal Console etc.
 * Add NodeJS based container to help Frontend themes builds using another best practice convention (more to be detailed soon)
+* Initial documentation
 
 ## Original text for Drupal Composer:
 
