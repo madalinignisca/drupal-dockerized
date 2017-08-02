@@ -3,6 +3,8 @@ MAINTAINER Madalin Ignisca <madalin.ignisca@gmail.com>
 
 ENV LANG C.UTF-8
 
+EXPOSE 443
+
 RUN apt-get update; apt-get install -y openssl; \
   rm -rf /etc/nginx/conf.d/*; \
   mkdir -p /etc/nginx/external; \

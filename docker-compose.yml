@@ -16,15 +16,25 @@ services:
     image: 16nsk/drupal-php:1.0.0
     ports:
       - "9000"
+    environment:
+      - MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD}
+      - MYSQL_DATABASE=${MYSQL_DATABASE}
+      - MYSQL_USER=${MYSQL_USER}
+      - MYSQL_PASSWORD=${MYSQL_PASSWORD}
     volumes:
       - .:/app
     links:
       - db
       - cache
       - search
-  watcher:
-    build: ./docker/watcher/
-    image: 16nsk/drupal-watcher:1.0.0
+  drupal:
+    build: ./docker/drupal/
+    image: 16nsk/drupal:1.0.0
+    environment:
+      - MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD}
+      - MYSQL_DATABASE=${MYSQL_DATABASE}
+      - MYSQL_USER=${MYSQL_USER}
+      - MYSQL_PASSWORD=${MYSQL_PASSWORD}
     volumes:
       - .:/app
     links:

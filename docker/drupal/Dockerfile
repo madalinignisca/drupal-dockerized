@@ -35,5 +35,10 @@ RUN set -xe; \
 # https://github.com/moby/moby/issues/3465
 # UNSET EXPOSE
 
+ADD entrypoint.sh /opt/entrypoint.sh
+RUN chmod a+x /opt/entrypoint.sh
+
+ENTRYPOINT ["/opt/entrypoint.sh"]
+
 
 CMD ["watchman", "-f",  "watch", "/app"]
