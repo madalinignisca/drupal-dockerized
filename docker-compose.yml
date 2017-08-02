@@ -2,11 +2,12 @@ version: "3.3"
 
 services:
   web:
-    image: nginx:1.12.1
+    build: ./docker/nginx/
+    image: 16nsk/nginx:1.0.0
     ports:
       - "8080:80"
+      - "8443:443"
     volumes:
-      - ./docker/nginx/nginx.conf:/etc/nginx/nginx.conf:ro
       - .:/app
     links:
       - workers
