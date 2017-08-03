@@ -68,7 +68,7 @@ services:
     ports:
      - "8983"
     volumes:
-      - ./docker/solr/conf/6.x:/myconfig
+      - ./docker/solr/conf/6.x:/myconfig/conf
       - data-search:/opt/solr/server/solr/mycores
     entrypoint:
       - docker-entrypoint.sh
