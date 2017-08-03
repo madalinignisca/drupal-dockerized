@@ -42,7 +42,7 @@ services:
       - cache
       - search
   db:
-    image: mariadb:10.2.7
+    image: mariadb:5.5.57
     ports:
       - "3306"
     environment:

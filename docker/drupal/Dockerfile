@@ -16,7 +16,7 @@ RUN set -xe; \
     automake \
   '; \
   apt-get update; \
-  apt-get install -y --no-install-recommends $fetchDeps; \
+  apt-get install -y --no-install-recommends $fetchDeps mysql-client; \
   rm -rf /var/lib/apt/lists/*; \
   mkdir -p /usr/src; \
   cd /usr/src; \
@@ -39,6 +39,5 @@ ADD entrypoint.sh /opt/entrypoint.sh
 RUN chmod a+x /opt/entrypoint.sh
 
 ENTRYPOINT ["/opt/entrypoint.sh"]
-
 
 CMD ["watchman", "-f",  "watch", "/app"]
