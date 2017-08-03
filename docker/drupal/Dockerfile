@@ -1,7 +1,14 @@
 FROM 16nsk/drupal-php:1.0.0
 
-ENV WATCHMAN_VERSION 4.7.0
+ENV WATCHMAN_VERSION="4.7.0"
 ENV WATCHMAN_URL="https://github.com/facebook/watchman/archive/v4.7.0.tar.gz"
+ENV COMPOSER_VERSION="1.4.2"
+
+RUN php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');"; \
+  php composer-setup.php; \
+  php -r "unlink('composer-setup.php');"; \
+  mv composer.phar /usr/local/bin/composer; \
+  chmod +x /usr/local/bin/composer
 
 # Install Watchman https://facebook.github.io/watchman
 RUN set -xe; \
