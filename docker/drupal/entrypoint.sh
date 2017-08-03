@@ -12,7 +12,7 @@ cd /app/web
 DRUPAL_INSTALLED="$(../vendor/bin/drush status bootstrap | grep -c Successful)"
 
 # If Drupal is not installed, do minimal installation
-if [ -z "$DRUPAL_INSTALLED" ]
+if [ "$DRUPAL_INSTALLED" -eq "0" ]
 then
   echo "Drupal is not installed.\n"
   echo "Installing Drupal. This might take a minute.\n"
