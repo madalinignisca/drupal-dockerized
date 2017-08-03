@@ -4,9 +4,12 @@ cat <<EOF
 Welcome to the 16nsk/drupal container
 EOF
 
+# Run composer install
+composer install
+
 # Check if Drupal is installed
 cd /app/web
-DRUPAL_INSTALLED="$(../vendor/bin/drush status bootstrap | grep -q Successful)"
+DRUPAL_INSTALLED="$(../vendor/bin/drush status bootstrap | grep -c Successful)"
 
 # If Drupal is not installed, do minimal installation
 if [ -z "$DRUPAL_INSTALLED" ]
