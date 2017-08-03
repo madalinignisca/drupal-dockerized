@@ -9,6 +9,7 @@ services:
       - "8443:443"
     volumes:
       - .:/app
+      - web-etc:/etc/nginx/external
     links:
       - workers
   workers:
@@ -30,6 +31,8 @@ services:
   drupal:
     build: ./docker/drupal/
     image: 16nsk/drupal:1.0.0
+    ports:
+      - "8888"
     environment:
       - MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD}
       - MYSQL_DATABASE=${MYSQL_DATABASE}
@@ -37,12 +40,13 @@ services:
       - MYSQL_PASSWORD=${MYSQL_PASSWORD}
     volumes:
       - .:/app
+      - composer-cache:/root/.composer
     links:
       - db
       - cache
       - search
   db:
-    image: mariadb:5.5.57
+    image: mariadb:10.2.7
     ports:
       - "3306"
     environment:
@@ -69,10 +73,12 @@ services:
     entrypoint:
       - docker-entrypoint.sh
       - solr-precreate
-      - mycore
+      - drupal
       - "/myconfig"
 
 volumes:
   data-db: {}
   data-cache: {}
   data-search: {}
+  web-etc: {}
+  composer-cache: {}
