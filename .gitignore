@@ -20,6 +20,9 @@
 !/cache/**/.gitkeep
 /cache
 
+# Node
+node_modules
+
 # Credentials
 .env
 .salt
