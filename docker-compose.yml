@@ -8,8 +8,8 @@ services:
       - "8080:80"
       - "8443:443"
     volumes:
-      - .:/app
-      - web-etc:/etc/nginx/external
+      - .:/app:delegated
+      - web-etc:/etc/nginx/external:consistent
     links:
       - workers
   workers:
@@ -23,7 +23,7 @@ services:
       - MYSQL_USER=${MYSQL_USER}
       - MYSQL_PASSWORD=${MYSQL_PASSWORD}
     volumes:
-      - .:/app
+      - .:/app:delegated
     links:
       - db
       - cache
@@ -39,8 +39,8 @@ services:
       - MYSQL_USER=${MYSQL_USER}
       - MYSQL_PASSWORD=${MYSQL_PASSWORD}
     volumes:
-      - .:/app
-      - composer-cache:/root/.composer
+      - .:/app:delegated
+      - ./cache/composer:/root/.composer/cache:consistent
     links:
       - db
       - cache
