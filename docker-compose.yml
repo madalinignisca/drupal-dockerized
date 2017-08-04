@@ -18,10 +18,16 @@ services:
     ports:
       - "9000"
     environment:
+      - ENV=${ENV}
       - MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD}
       - MYSQL_DATABASE=${MYSQL_DATABASE}
       - MYSQL_USER=${MYSQL_USER}
       - MYSQL_PASSWORD=${MYSQL_PASSWORD}
+      - AWS_ACCESS_KEY_ID=${AWS_ACCESS_KEY_ID}
+      - AWS_SECRET_ACCESS_KEY=${AWS_SECRET_ACCESS_KEY}
+      - AWS_REGION=${AWS_REGION}
+      - AWS_BUCKET_PUBLIC=${AWS_BUCKET_PUBLIC}
+      - AWS_BUCKET_PRIVATE=${AWS_BUCKET_PRIVATE}
     volumes:
       - .:/app:delegated
     links:
@@ -34,12 +40,18 @@ services:
     ports:
       - "8888"
     environment:
+      - ENV=${ENV}
       - MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD}
       - MYSQL_DATABASE=${MYSQL_DATABASE}
       - MYSQL_USER=${MYSQL_USER}
       - MYSQL_PASSWORD=${MYSQL_PASSWORD}
+      - AWS_ACCESS_KEY_ID=${AWS_ACCESS_KEY_ID}
+      - AWS_SECRET_ACCESS_KEY=${AWS_SECRET_ACCESS_KEY}
+      - AWS_REGION=${AWS_REGION}
+      - AWS_BUCKET_PUBLIC=${AWS_BUCKET_PUBLIC}
+      - AWS_BUCKET_PRIVATE=${AWS_BUCKET_PRIVATE}
     volumes:
-      - .:/app:delegated
+      - .:/app:consistent
       - ./cache/composer:/root/.composer/cache:consistent
     links:
       - db
