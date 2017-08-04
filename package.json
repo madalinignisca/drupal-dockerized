@@ -1,0 +1,41 @@
+{
+  "name": "drupal-project",
+  "private": true,
+  "engines": {
+    "node": ">=6"
+  },
+  "version": "1.0.0",
+  "description": "Includes Nginx, PHP-FPM, MariaDB, Redis and Solr.",
+  "main": "index.js",
+  "watch": {
+    "css": {
+        "patterns": [
+          "src"
+        ],
+        "extensions": "scss,sass",
+        "quiet": false
+      }
+  },
+  "scripts": {
+    "watch": "npm-watch",
+    "css": "./node_modules/.bin/grunt sass"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/madalinignisca/drupal-dockerized.git"
+  },
+  "keywords": [
+    "drupal"
+  ],
+  "author": "Madalin Ignisca <madalin.ignisca@gmail.com>",
+  "license": "GPL-2.0",
+  "bugs": {
+    "url": "https://github.com/madalinignisca/drupal-dockerized/issues"
+  },
+  "homepage": "https://github.com/madalinignisca/drupal-dockerized#readme",
+  "dependencies": {
+    "npm-watch": "^0.2.0",
+    "grunt": "^1.0.1",
+    "grunt-sass": "^2.0.0"
+  }
+}

@@ -1,0 +1,6 @@
+name: Bootstraped
+type: theme
+description: Starter theme for the Drupal Dockerized Distribution
+package: Docker
+version: 1.0.0
+core: 8.x

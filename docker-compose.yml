@@ -87,6 +87,11 @@ services:
       - solr-precreate
       - drupal
       - "/myconfig"
+  node:
+    build: ./docker/node/
+    image: 16nsk/node:1.0.0
+    volumes:
+      - ./:/app:delegated
 
 volumes:
   data-db: {}
@@ -94,3 +99,4 @@ volumes:
   data-search: {}
   web-etc: {}
   composer-cache: {}
+  node-modules: {}
