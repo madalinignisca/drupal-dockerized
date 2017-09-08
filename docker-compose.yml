@@ -30,6 +30,7 @@ services:
       - AWS_BUCKET_PRIVATE=${AWS_BUCKET_PRIVATE}
     volumes:
       - .:/app:delegated
+      - ./config/php.development.ini:/usr/local/etc/php/php.ini:delegated
     links:
       - db
       - cache
@@ -53,6 +54,7 @@ services:
     volumes:
       - .:/app:consistent
       - ./cache/composer:/root/.composer/cache:consistent
+      - ./config/php.development.ini:/usr/local/etc/php/php.ini:delegated
     links:
       - db
       - cache
