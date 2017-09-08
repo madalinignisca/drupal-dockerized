@@ -14,7 +14,7 @@ services:
       - workers
   workers:
     build: ./docker/php/
-    image: 16nsk/drupal-php:1.0.0
+    image: 16nsk/php:1.0.0
     ports:
       - "9000"
     environment:
