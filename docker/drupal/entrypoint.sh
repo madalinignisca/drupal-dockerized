@@ -16,7 +16,7 @@ if [ "$DRUPAL_INSTALLED" -eq "0" ]
 then
   echo "Drupal is not installed.\n"
   echo "Installing Drupal. This might take a minute.\n"
-  ../vendor/bin/drush si minimal -y --notify
+  ../vendor/bin/drush si minimal -y
   echo "Drupal is now installed. Check the admin password above!\n"
 fi
 

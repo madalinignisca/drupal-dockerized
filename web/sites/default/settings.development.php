@@ -36,7 +36,7 @@ assert_options(ASSERT_ACTIVE, TRUE);
 /**
  * Enable local development services.
  */
-$settings['container_yamls'][] = DRUPAL_ROOT . '/sites/development.services.yml';
+# $settings['container_yamls'][] = DRUPAL_ROOT . '/sites/development.services.yml';
 
 /**
  * Show all error messages, with backtrace information.
@@ -44,13 +44,13 @@ $settings['container_yamls'][] = DRUPAL_ROOT . '/sites/development.services.yml'
  * In case the error level could not be fetched from the database, as for
  * example the database connection failed, we rely only on this value.
  */
-$config['system.logging']['error_level'] = 'verbose';
+# $config['system.logging']['error_level'] = 'verbose';
 
 /**
  * Disable CSS and JS aggregation.
  */
-$config['system.performance']['css']['preprocess'] = FALSE;
-$config['system.performance']['js']['preprocess'] = FALSE;
+# $config['system.performance']['css']['preprocess'] = FALSE;
+# $config['system.performance']['js']['preprocess'] = FALSE;
 
 /**
  * Disable the render cache (this includes the page cache).
@@ -64,7 +64,7 @@ $config['system.performance']['js']['preprocess'] = FALSE;
  *
  * Do not use this setting until after the site is installed.
  */
-$settings['cache']['bins']['render'] = 'cache.backend.null';
+# $settings['cache']['bins']['render'] = 'cache.backend.null';
 
 /**
  * Disable caching for migrations.
@@ -72,7 +72,7 @@ $settings['cache']['bins']['render'] = 'cache.backend.null';
  * Uncomment the code below to only store migrations in memory and not in the
  * database. This makes it easier to develop custom migrations.
  */
-$settings['cache']['bins']['discovery_migration'] = 'cache.backend.memory';
+# $settings['cache']['bins']['discovery_migration'] = 'cache.backend.memory';
 
 /**
  * Disable Dynamic Page Cache.
@@ -81,7 +81,7 @@ $settings['cache']['bins']['discovery_migration'] = 'cache.backend.memory';
  * cacheability metadata is present (and hence the expected behavior). However,
  * in the early stages of development, you may want to disable it.
  */
-$settings['cache']['bins']['dynamic_page_cache'] = 'cache.backend.null';
+# $settings['cache']['bins']['dynamic_page_cache'] = 'cache.backend.null';
 
 /**
  * Allow test modules and themes to be installed.
@@ -90,7 +90,7 @@ $settings['cache']['bins']['dynamic_page_cache'] = 'cache.backend.null';
  * During development it can be useful to install test extensions for debugging
  * purposes.
  */
-$settings['extension_discovery_scan_tests'] = TRUE;
+# $settings['extension_discovery_scan_tests'] = TRUE;
 
 /**
  * Enable access to rebuild.php.
@@ -100,7 +100,7 @@ $settings['extension_discovery_scan_tests'] = TRUE;
  * be gained by generating a query string from rebuild_token_calculator.sh and
  * using these parameters in a request to rebuild.php.
  */
-$settings['rebuild_access'] = FALSE;
+$settings['rebuild_access'] = TRUE;
 
 /**
  * Skip file system permissions hardening.
@@ -113,11 +113,6 @@ $settings['rebuild_access'] = FALSE;
  * directory.
  */
 $settings['skip_permissions_hardening'] = TRUE;
-
-/**
- * Profile to force installation
- */
-$settings['install_profile'] = 'minimal';
 
 /**
  * Trusted host configuration.
@@ -142,16 +137,19 @@ $databases['default']['default'] = array (
 
 /**
  * Redis
+ *
+ * Disabled by default as it fails new installations.
+ * Enable it once required.
  */
-$settings['redis.connection']['interface'] = 'PhpRedis'; // Can be "Predis".
-$settings['redis.connection']['host']      = 'cache';  // Your Redis instance hostname.
-$settings['cache']['default'] = 'cache.backend.redis';
+# $settings['redis.connection']['interface'] = 'PhpRedis'; // Can be "Predis".
+# $settings['redis.connection']['host']      = 'cache';  // Your Redis instance hostname.
+# $settings['cache']['default'] = 'cache.backend.redis';
 // Always set the fast backend for bootstrap, discover and config, otherwise
 // this gets lost when redis is enabled.
-$settings['cache']['bins']['bootstrap'] = 'cache.backend.chainedfast';
-$settings['cache']['bins']['discovery'] = 'cache.backend.chainedfast';
-$settings['cache']['bins']['config'] = 'cache.backend.chainedfast';
-$settings['container_yamls'][] = 'web/default/redis.services.yml';
+# $settings['cache']['bins']['bootstrap'] = 'cache.backend.chainedfast';
+# $settings['cache']['bins']['discovery'] = 'cache.backend.chainedfast';
+# $settings['cache']['bins']['config'] = 'cache.backend.chainedfast';
+# $settings['container_yamls'][] = 'web/default/redis.services.yml';
 
 /**
  * Solr configuration
@@ -169,6 +167,8 @@ $config['search_api.server.docker'] = [
 
 /**
  * S3 replacement service
+ *
+ * @TODO enhance documentation on and make reference to the official module
  */
 
 $settings['flysystem'] = [

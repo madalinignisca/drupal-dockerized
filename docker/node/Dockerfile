@@ -1,5 +1,4 @@
-FROM node:6.11.2
-
+FROM node:6.11.3
 WORKDIR /app
 
 ADD entrypoint.sh /opt/entrypoint.sh

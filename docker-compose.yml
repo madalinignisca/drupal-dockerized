@@ -9,7 +9,7 @@ services:
       - "8443:443"
     volumes:
       - .:/app:delegated
-      - web-etc:/etc/nginx/external:consistent
+      - web-etc:/etc/nginx/external
     links:
       - workers
   workers:
@@ -38,7 +38,7 @@ services:
     build: ./docker/drupal/
     image: 16nsk/drupal:1.0.0
     ports:
-      - "8888"
+      - "8888:8888"
     environment:
       - ENV=${ENV}
       - MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD}
@@ -58,7 +58,7 @@ services:
       - cache
       - search
   db:
-    image: mariadb:10.2.7
+    image: mariadb:10.2.8
     ports:
       - "3306"
     environment:
@@ -71,14 +71,14 @@ services:
   cache:
     image: redis:4.0.1
     ports:
-      - "6379"
+      - "6379:6379"
     command: redis-server --appendonly yes
     volumes:
       - data-cache:/data
   search:
     image: solr:6.6.0
     ports:
-     - "8983"
+     - "8983:8983"
     volumes:
       - ./docker/solr/conf/6.x:/myconfig/conf
       - data-search:/opt/solr/server/solr/mycores

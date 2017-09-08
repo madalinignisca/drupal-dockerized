@@ -785,3 +785,4 @@ switch (getenv('ENV')) {
     break;
 }
 $config_directories['sync'] = '../config/sync';
+$settings['install_profile'] = 'minimal';
