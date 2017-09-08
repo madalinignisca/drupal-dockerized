@@ -10,6 +10,7 @@ Includes Nginx, PHP-FPM, MariaDB, Redis and Solr.
 * Copy and edit as required `.env.development` to `.env` and `.salt.example` to `.salt`
 * Default is the **minimal** installation. To use **standard** edit `docker/drupal/entrypoint.sh:19`
 * In the project root, run `docker-compose up`
+* ... First run will take some time (downloading images, doing `composer install` and installing Drupal)
 * To stop hit `CTRL-C` and wait for the services to terminate (it's important!)
 
 To use Drupal's Drush or Console in another terminal run `docker-composer exec drupal /bin/bash`

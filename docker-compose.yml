@@ -2,7 +2,6 @@ version: "3.3"
 
 services:
   web:
-    build: ./docker/nginx/
     image: 16nsk/nginx:1.0.0
     ports:
       - "8080:80"
@@ -13,7 +12,6 @@ services:
     links:
       - workers
   workers:
-    build: ./docker/php/
     image: 16nsk/php:1.0.0
     ports:
       - "9000"
@@ -36,7 +34,6 @@ services:
       - cache
       - search
   drupal:
-    build: ./docker/drupal/
     image: 16nsk/drupal:1.0.0
     ports:
       - "8888:8888"
@@ -90,7 +87,6 @@ services:
       - drupal
       - "/myconfig"
   node:
-    build: ./docker/node/
     image: 16nsk/node:1.0.0
     volumes:
       - ./:/app:delegated
