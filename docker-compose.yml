@@ -33,6 +33,7 @@ services:
       - db
       - cache
       - search
+      - mail
   drupal:
     image: 16nsk/drupal:1.0.0
     ports:
@@ -56,6 +57,7 @@ services:
       - db
       - cache
       - search
+      - mail
   db:
     image: mariadb:10.2.8
     ports:
@@ -77,7 +79,7 @@ services:
   search:
     image: solr:6.6.0
     ports:
-     - "8983:8983"
+      - "8983:8983"
     volumes:
       - ./docker/solr/conf/6.x:/myconfig/conf
       - data-search:/opt/solr/server/solr/mycores
@@ -90,6 +92,10 @@ services:
     image: 16nsk/node:1.0.0
     volumes:
       - ./:/app:delegated
+  mail:
+    image: mailhog/mailhog:v1.0.0
+    ports:
+      - "8025:8025"
 
 volumes:
   data-db: {}

@@ -119,6 +119,7 @@ $settings['skip_permissions_hardening'] = TRUE;
  */
 $settings['trusted_host_patterns'] = array(
   '^127\.0\.0\.1$',
+  '^localhost$',
 );
 
 /**
@@ -217,4 +218,5 @@ $settings['flysystem'] = [
   //   'cache' => TRUE, // Creates a metadata cache to speed up lookups.
   // ],
 ];
-$settings['flysystem']['default'] = $settings['flysystem']['local.public'];
+$settings['flysystem']['public'] = $settings['flysystem']['local.public'];
+$settings['flysystem']['private'] = $settings['flysystem']['local.public'];
