@@ -4,17 +4,15 @@ services:
   web:
     image: 16nsk/nginx:1.0.0
     ports:
-      - "8080:80"
-      - "8443:443"
+      - "18080:80"
+      - "18443:443"
     volumes:
-      - .:/app:delegated
+      - ./app:/app:delegated
       - web-etc:/etc/nginx/external
     links:
       - workers
   workers:
     image: 16nsk/php:1.0.0
-    ports:
-      - "9000"
     environment:
       - ENV=${ENV}
       - MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD}
@@ -27,7 +25,7 @@ services:
       - AWS_BUCKET_PUBLIC=${AWS_BUCKET_PUBLIC}
       - AWS_BUCKET_PRIVATE=${AWS_BUCKET_PRIVATE}
     volumes:
-      - .:/app:delegated
+      - ./app:/app:delegated
       - ./config/php.development.ini:/usr/local/etc/php/php.ini:delegated
     links:
       - db
@@ -36,8 +34,6 @@ services:
       - mail
   drupal:
     image: 16nsk/drupal:1.0.0
-    ports:
-      - "8888:8888"
     environment:
       - ENV=${ENV}
       - MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD}
@@ -50,7 +46,7 @@ services:
       - AWS_BUCKET_PUBLIC=${AWS_BUCKET_PUBLIC}
       - AWS_BUCKET_PRIVATE=${AWS_BUCKET_PRIVATE}
     volumes:
-      - .:/app:consistent
+      - ./app:/app:consistent
       - ./cache/composer:/root/.composer/cache:consistent
       - ./config/php.development.ini:/usr/local/etc/php/php.ini:delegated
     links:
@@ -71,15 +67,13 @@ services:
       - data-db:/var/lib/mysql
   cache:
     image: redis:4.0.1
-    ports:
-      - "6379:6379"
     command: redis-server --appendonly yes
     volumes:
       - data-cache:/data
   search:
     image: solr:6.6.0
     ports:
-      - "8983:8983"
+      - "18983:8983"
     volumes:
       - ./docker/solr/conf/6.x:/myconfig/conf
       - data-search:/opt/solr/server/solr/mycores
@@ -91,11 +85,11 @@ services:
   node:
     image: 16nsk/node:1.0.0
     volumes:
-      - ./:/app:delegated
+      - ./app:/app:delegated
   mail:
     image: mailhog/mailhog:v1.0.0
     ports:
-      - "8025:8025"
+      - "18025:8025"
 
 volumes:
   data-db: {}

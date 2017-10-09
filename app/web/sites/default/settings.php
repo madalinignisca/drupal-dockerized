@@ -782,3 +782,15 @@ switch (getenv('ENV')) {
     break;
 }
 $config_directories['sync'] = '../config/sync';
+$databases['default']['default'] = array (
+  'database' => 'drupal',
+  'username' => 'drupal',
+  'password' => 'drupal',
+  'prefix' => '',
+  'host' => 'db',
+  'port' => '3306',
+  'namespace' => 'Drupal\\Core\\Database\\Driver\\mysql',
+  'driver' => 'mysql',
+);
+$settings['hash_salt'] = 'FqgkWuLlucvLJGUWTQ6gOX9xWU9amEg3IHXH9__iBMDFSZxdPCblrCOzlCOLN5ZQX7lldmVHiQ';
+$settings['install_profile'] = 'minimal';
