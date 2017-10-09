@@ -20,7 +20,7 @@ A profile based on Minimal that enables and configures defaults to use Redis and
 * Have Docker installed, including `docker-compose`
   * Recommended: use the official Docker installer if on macOS or Windows 10+
     as they provide improved file sharing
-* Copy and edit as required `.env.development` to `.env` and `.salt.example` to `.salt`
+* Copy and edit as required `.env.development` to `.env` and `/.salt.example` to `/app/.salt`
 * Default is the **minimal** installation. To use **standard** edit `docker/drupal/entrypoint.sh:19`
 * In the project root, run `docker-compose up`
 * ... First run will take some time (downloading images, doing `composer install` and installing Drupal)
