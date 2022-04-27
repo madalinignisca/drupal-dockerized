@@ -35,7 +35,7 @@
   "homepage": "https://github.com/madalinignisca/drupal-dockerized#readme",
   "dependencies": {
     "npm-watch": "^0.2.0",
-    "grunt": "^1.0.1",
+    "grunt": "^1.5.2",
     "grunt-sass": "^2.0.0"
   }
 }
